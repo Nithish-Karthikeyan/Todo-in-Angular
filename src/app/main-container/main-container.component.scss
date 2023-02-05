@@ -1,0 +1,204 @@
+.main-container {
+    display: inline-block;
+    vertical-align: top;
+    width: 76.6%; 
+    height: 100%;
+    background-color: #faf9f8;
+
+    .main-container-header {
+        margin: 16px 24px;
+        padding: 8px 16px;
+
+        .main-container-icon {
+            display: inline-block;
+            width:24px;
+            height:24px;
+            font-size: larger;
+        }
+
+        .main-container-title {
+            display: inline-block;
+            background-color: transparent;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .current-date {
+            display: block;
+            color: #605e5c;
+            margin-top:5px;
+            font-size: 12px;
+        }
+    }
+
+    .task {
+        width:92%;
+        height:10%;
+        margin-left: 20px;
+        background-color: #ffffff;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        box-shadow: 0.5px 1px 2px 0.5px gray;
+
+        .task-status-icon {
+            display: inline-block;
+            color: #2564CF;
+            vertical-align: top;
+            margin-top:14px;
+            margin-left:14px;
+        }
+    }
+
+    .new-task { 
+        display: inline-block;
+
+        .add-new-task {
+            width: 312%;
+            height:44px;
+            padding:2px 14px 14px 18px;
+            background-color: transparent;
+            font-size: 18px;
+            vertical-align: top;
+        }   
+
+        input::placeholder {
+            color: #2564CF;
+            font-size: 16px;
+        }
+    }
+
+    .manage-task {
+        width:92%;
+        height:52px;
+        margin-left: 20px;
+        background-color: #fAf9f8;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        box-shadow: 0.4px 1px 2px 0.5px grey;
+
+        .manage-task-icons {
+            padding: 10px 16px;
+            display: inline-block;
+        }
+
+        .manage-task-icons > div {
+            display: inline-block;
+            text-align: center;
+            width:28px;
+            height:28px;
+            padding: 4px;
+        }
+
+        .manage-task-icons > div:hover {
+            background-color: #ffffff;
+        }
+
+        .hide-add-button {
+            display: inline-block;
+            width: 22px;
+            height: 30px;
+            margin-left: 75%;
+            background-color: #ffffff;
+            padding: 0 10px;
+            text-align: center;
+            border: 1px solid #e1dfdd;
+
+            button {
+                color:  #2564CF;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .tasks-container {
+        width:100%;
+        height:315px;
+        overflow-y: auto;
+        padding-top: 8px;
+
+        .task-container {
+            .create-task {
+                width:89%;
+                height:52px;
+                margin:8px 0 0 20px;
+                border-radius: 2px;
+                padding: 0 16px;
+                background-color: #ffffff;
+                box-shadow: 0.4px 1px 2px 0.5px grey; 
+                cursor: pointer;     
+                
+                i {
+                    color: #2564CF;
+                }
+
+                div:first-child {
+                    display: inline-block;
+                    text-align: center;
+                    margin-top: 14px;
+                }
+
+                .added-task {
+                    display: inline-block;
+                    padding: 15px 14px;
+                    width: 88%;
+                }
+
+                div:last-child {
+                    display: inline-block;
+                }
+            }
+
+            .selected-task {
+                cursor:pointer;
+                background-color: #eff6fc;   
+            }
+        }  
+        
+        .completed-task-container {
+            .create-task {
+                width:89%;
+                height:52px;
+                margin:8px 0 0 20px;
+                border-radius: 2px;
+                padding: 0 16px;
+                background-color: #ffffff;
+                box-shadow: 0.4px 1px 2px 0.5px grey; 
+                cursor: pointer;
+
+                i {
+                    color: #2564CF;
+                }
+
+                div:first-child {
+                    display: inline-block;
+                    text-align: center;
+                    margin-top: 14px;
+                }
+
+                div:last-child {
+                    display: inline-block;
+                }
+
+                .added-task {
+                    display: inline-block;
+                    padding: 15px 14px;
+                    width: 88%;
+                }
+            }
+            
+            .completed-tasks {
+                background-color: transparent;
+                margin: 8px 20px;
+                font-size: 16px;
+                font-weight: 500;
+                border-bottom: 1px solid black;
+                padding: 5px 2px 15px 2px;
+                display: block;
+            }
+        }
+    }
+}
+
+.hide-completed-tasks{
+    display: none;
+}

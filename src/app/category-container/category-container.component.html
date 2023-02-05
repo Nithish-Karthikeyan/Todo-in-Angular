@@ -1,0 +1,20 @@
+<ul id = "task-list">
+    <li class="side-navigation-menu" *ngFor="let category of categories">
+        <div class="side-navigation-menu-icon">
+            <i class="{{category.icon}}"></i>
+        </div>
+        <div>
+            <span>
+            {{category.name}}
+        </span>
+        </div>
+    </li>
+</ul>
+
+<div>
+    <button><i class="fa-solid fa-plus"></i></button> 
+    <div class="add-list">
+        <input #category id="add-new-task-collection" type="text" placeholder="New list" (keyup.enter)="addCategory(category.value); category.value= ''">
+    </div>    
+    <i class="fa-solid fa-user-plus"></i>
+</div>  
