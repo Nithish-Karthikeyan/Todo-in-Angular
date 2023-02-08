@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Category } from '../Category';
 
 @Component({
   selector: 'app-side-nav',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent {
+
+  selectedCategory!: Category;
+  
+  chooseCategory(category: Category){
+    this.selectedCategory = category;
+  }
 
 }

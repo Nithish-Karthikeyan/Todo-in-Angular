@@ -1,11 +1,13 @@
 <div class ="main-container" id="main-container">
     <div class="main-container-header">
         <div id="main-title-icon" class="main-container-icon">
+        <i class="{{category.icon}}"></i>
         </div>
         <div id = "task-title" class="main-container-title">
+            {{category.name}}
         </div>
         <div class="current-date">
-            <p id="date"></p>
+            <p id="date">{{currentDate}}</p>
         </div> 
     </div>
     <div class = "task" id="task">
@@ -13,7 +15,7 @@
             <i class="fa-regular fa-circle"></i>
         </div>
         <div class="new-task">
-            <input class="add-new-task "id="add-new-task" type="text" placeholder="Add a task">
+            <input #task class="add-new-task "id="add-new-task" type="text" placeholder="Add a task" (keyup.enter)="addTask(task.value); task.value= ''">
         </div>
     </div>
     <div class="manage-task" id="manage-task">
@@ -33,7 +35,18 @@
         </div>
     </div>
     <div class="tasks-container">
-        <div class="task-container" id="task-container">
+        <div class="task-container" id="task-container" *ngFor="let task of tasks">
+            <div class="create-task" id="">
+                <div class="complete-icon">
+                    <i [ngClass]="task.isCompleted ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'" (click)="completedTask(task.id)"></i>
+                </div> 
+                <div class="added-task" id="">
+                    <p>{{task.name}}</p>
+                </div>
+                <div class="important-icon">
+                    <i [ngClass]="task.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'" (click)="markImportant(task.id)"></i>
+                </div>
+            </div>
         </div>
         <div class="completed-task-container">
             <div class="completed-tasks">

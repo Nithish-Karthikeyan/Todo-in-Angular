@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TodoServiceService } from '../todo-service.service';
+import { Category } from '../Category';
 
 @Component({
   selector: 'app-category-container',
   templateUrl: './category-container.component.html',
   styleUrls: ['./category-container.component.scss']
 })
-export class CategoryContainerComponent {
+export class CategoryContainerComponent implements OnInit {
 
-    categories: Category = [{id:1, name :'My Day', icon:"fa-regular fa-sun"}, 
-                  {id:2, name:'Important', icon:"fa-regular fa-star"}, 
-                  {id:3, name:'Planned', icon:"fa-regular fa-calendar"}, 
-                  {id:4, name:'Assigned To Me', icon:"fa-regular fa-user"}, 
-                  {id:5, name:'Tasks', icon:"fa-solid fa-house"}]
+  @Output() selectedCategory = new EventEmitter<Category>();
+
+    categories: Category[] = [];
+    highlightSelectedCategory: string = "";
+
+    constructor(private toDoService: TodoServiceService) {}
 
     addCategory(value: string) {
       let categoryName:string;
@@ -21,17 +24,26 @@ export class CategoryContainerComponent {
           categoryName = "Untitled Task";
         }
         let category = {
-          id: 6,
+          id: 0,
           name: categoryName,
           icon: "fa-solid fa-list-ul",
         };
-        this.categories.push(category);
-    }              
-
+        this.toDoService.addCategory(category);
+        this.ngOnInit();
+    }        
+    
+    ngOnInit() {
+      this.toDoService.getCategory().subscribe((existingCategories) => { this.categories = existingCategories as Category[];
+        if(this.categories.length <= 5) {
+          this.selectCategory(this.categories[0]);
+        } else {
+          this.selectCategory(this.categories[this.categories.length - 1]);
+        }
+      });
+    }
+    
+    selectCategory(category: Category) {
+      this.selectedCategory.emit(category);
+      this.highlightSelectedCategory = "selected-menu";
+    }
 }
-
-type Category = Array<{
-  id: number, 
-  name: string, 
-  icon: string
-}>;

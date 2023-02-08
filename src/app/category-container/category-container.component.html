@@ -1,13 +1,14 @@
 <ul id = "task-list">
-    <li class="side-navigation-menu" *ngFor="let category of categories">
+    <li class="side-navigation-menu"  *ngFor="let category of categories" (click)="selectCategory(category)">
         <div class="side-navigation-menu-icon">
             <i class="{{category.icon}}"></i>
         </div>
         <div>
             <span>
-            {{category.name}}
-        </span>
+                {{category.name}}
+            </span>
         </div>
+        <hr [ngClass]="category.id==5? 'category-line':''">
     </li>
 </ul>
 

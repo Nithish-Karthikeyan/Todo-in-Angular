@@ -4,9 +4,8 @@
             <button id="toggle-menu"><i class="fa-solid fa-bars"></i></button>
         </div>
     </div>
-
     <div class="side-navigation-content">
-        <app-category-container></app-category-container>
+        <app-category-container (selectedCategory)="chooseCategory($event)"></app-category-container>
     </div>
 
     <div class="side-navigation-bottom">
@@ -27,3 +26,4 @@
         </div>
     </div>  
 </div>
+<app-main-container [category]="selectedCategory"></app-main-container>

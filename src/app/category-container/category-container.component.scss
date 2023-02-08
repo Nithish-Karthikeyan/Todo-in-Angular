@@ -27,6 +27,18 @@ ul {
 
     li { 
         padding: 6px 24px;
+
+        .category-line {
+            width: 240px;
+            border-top: 1px solid grey;
+        }    
+    }
+
+    .selected-menu {
+        pointer-events: none;
+        background-color: #eff6fc;
+        font-weight: 600;
+        border-left: 2px solid #2564CF;
     }
 }
 
@@ -36,6 +48,7 @@ div:last-child {
 
     .add-list {
         display: inline-block;
+        width: 72%;
     
         input {
             width: 162px;
