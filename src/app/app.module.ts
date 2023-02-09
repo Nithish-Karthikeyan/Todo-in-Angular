@@ -5,18 +5,14 @@ import { TodoModule } from './todo/todo.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { MainContainerComponent } from './main-container/main-container.component';
-import { RightContainerComponent } from './right-container/right-container.component';
-import { CategoryContainerComponent } from './category-container/category-container.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from './common/common.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        SideNavComponent,
-        MainContainerComponent,
-        RightContainerComponent,
-        CategoryContainerComponent,
+        PageNotFoundComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -25,6 +21,8 @@ import { CategoryContainerComponent } from './category-container/category-contai
         AppRoutingModule,
         HttpClientModule,
         TodoModule,
+        CommonModule,
+        FormsModule
     ]
 })
 export class AppModule { }

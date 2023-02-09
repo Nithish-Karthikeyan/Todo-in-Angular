@@ -15,7 +15,7 @@
 <div>
     <button><i class="fa-solid fa-plus"></i></button> 
     <div class="add-list">
-        <input #category id="add-new-task-collection" type="text" placeholder="New list" (keyup.enter)="addCategory(category.value); category.value= ''">
+        <input  [(ngModel)]="category" id="add-new-task-collection" type="text" placeholder="New list" (keyup.enter)="addCategory(category); category= ''">
     </div>    
     <i class="fa-solid fa-user-plus"></i>
 </div>  

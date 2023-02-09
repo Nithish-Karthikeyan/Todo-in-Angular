@@ -1,0 +1,37 @@
+.open-settings {
+    i {
+        margin: 0;
+        padding:0;
+    }
+
+    div:first-child {
+        text-align: center;
+        font-size:x-large;
+
+        p {
+           display: inline-block; 
+           margin-left: 10px;
+        }
+    }
+
+    .setting-menu {
+        width: 10%;
+        height: 30%;
+        margin-left: 41%;
+        background-color: #fAf9f8;
+        padding: 15px 50px;
+        text-align: center;
+        border-radius: 10px;
+        margin-top: 10px;
+        font-size: large;
+
+        p {
+            display: inline-block; 
+            margin-left: 10px;
+        }
+    }
+
+    .setting-menu:hover{
+        font-weight: 600;
+    }
+}

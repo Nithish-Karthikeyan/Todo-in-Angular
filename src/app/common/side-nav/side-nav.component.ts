@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Category } from '../Category';
+import { Category } from '../../Category';
 
 @Component({
   selector: 'app-side-nav',

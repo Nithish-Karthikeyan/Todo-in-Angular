@@ -15,7 +15,7 @@
             <i class="fa-regular fa-circle"></i>
         </div>
         <div class="new-task">
-            <input #task class="add-new-task "id="add-new-task" type="text" placeholder="Add a task" (keyup.enter)="addTask(task.value); task.value= ''">
+            <input [(ngModel)]="task" class="add-new-task "id="add-new-task" type="text" placeholder="Add a task" (keyup.enter)="addTask(task); task= ''">
         </div>
     </div>
     <div class="manage-task" id="manage-task">

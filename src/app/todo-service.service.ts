@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from  '@angular/common/http';
 import { Category } from '../app/Category'
 import { HttpHeaders } from '@angular/common/http';
+import { Task } from './Task';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,18 @@ export class TodoServiceService {
       })
     };
     this.http.post("http://localhost:8080/todo/category",category, httpOptions).subscribe((result) => console.log("Added Successfully"));
+  }
+
+  getTasks() {
+    return this.http.get("http://localhost:8080/todo/tasks");
+  }
+
+  addTask(task: Task) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    this.http.post("http://localhost:8080/todo/task",task, httpOptions).subscribe((result) => console.log("Added Successfully"));
   }
 }

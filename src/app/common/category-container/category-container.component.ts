@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { TodoServiceService } from '../todo-service.service';
-import { Category } from '../Category';
+import { TodoServiceService } from '../../todo-service.service';
+import { Category } from '../../Category';
 
 @Component({
   selector: 'app-category-container',
@@ -13,6 +13,7 @@ export class CategoryContainerComponent implements OnInit {
 
     categories: Category[] = [];
     highlightSelectedCategory: string = "";
+    category!: string;
 
     constructor(private toDoService: TodoServiceService) {}
 

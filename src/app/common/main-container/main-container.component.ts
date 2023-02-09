@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../Task';
+import { Task } from '../../Task';
 import * as moment from 'moment';
-import { Category } from '../Category';
+import { Category } from '../../Category';
+import { TodoServiceService } from '../../todo-service.service';
 
 @Component({
   selector: 'app-main-container',
@@ -10,23 +11,26 @@ import { Category } from '../Category';
 })
 export class MainContainerComponent implements OnInit { 
   tasks: Task[] =[];
-  currentDate: any;
+  currentDate!: string;
+  task !: string;
 
   @Input()
   category!: Category;
 
+  constructor(private todoService:TodoServiceService){}
+
   addTask(value: string) {
     if (value && value.trim() !== "") {
       let newTask = {
-        id: 1,
+        id: 0,
         name: value,
-        categoryIds: [1],
+        categoryIds: [this.category.id],
         note: "none",
         isImportant: false,
         isCompleted: false,
       };
-      this.tasks.push(newTask);
-      console.log(this.tasks);
+      this.todoService.addTask(newTask);
+      this.renderTasks();
     }
   }
 
@@ -56,5 +60,12 @@ export class MainContainerComponent implements OnInit {
 
   ngOnInit() {
     this.currentDate = moment().format("dddd , MMMM D");
+    this.renderTasks();
+  }
+
+  renderTasks() {
+    this.todoService.getTasks().subscribe((existingTasks) => {
+      this.tasks = existingTasks as Task[];
+    });
   }
 }
