@@ -153,9 +153,23 @@
                 background-color: #eff6fc;   
             }
         }  
-        
-        .completed-task-container {
+
+        .hide-completed-tasks {
             display: none;
+        }
+                
+        .completed-tasks {
+            background-color: transparent;
+            margin: 8px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            border-bottom: 1px solid black;
+            padding: 5px 2px 15px 2px;
+            display: block;
+        }
+
+        .completed-task-container {
+            display: block;
             .create-task {
                 width:89%;
                 height:52px;
@@ -186,20 +200,77 @@
                     width: 88%;
                 }
             }
-            
-            .completed-tasks {
-                background-color: transparent;
-                margin: 8px 20px;
-                font-size: 16px;
-                font-weight: 500;
-                border-bottom: 1px solid black;
-                padding: 5px 2px 15px 2px;
-                display: block;
+        }
+    }
+}
+                
+.resize-main-container {
+    width: 49%;
+    height: 525px;
+
+    .manage-task {
+        .resize-hide-add-button {
+            width: 22px;
+            height: 30px;
+            margin-left: 60%;
+        }
+    
+        .task-container {
+            .create-task {
+                .resize-added-task {
+                    width: 80%;
+                }
+            }
+    
+            .new-task {
+                .resize-add-new-task {
+                    width: 191%;
+                }
             }
         }
     }
 }
 
-.hide-completed-tasks{
-    display: none;
+.resize-main-container-for-side-nav {
+    width: 100%;
+    height: 525px;
+    
+    .manage-task .resize-hide-add-button-for-side-nav {
+        width: 22px;
+        height: 30px;
+        margin-left: 80%;
+    }
+
+    .task-container {
+        .create-task { 
+            .resize-added-task-for-side-nav {
+                width: 80%;
+            }
+        }
+        
+        .new-task {
+            .resize-add-new-task-for-side-nav {
+                width: 400%;
+            }    
+        }
+    }    
+}
+
+.main-container-for-right-container {
+    width: 72%;
+    height: 525px;
+
+    .manage-task {
+        .hide-add-button-for-right-container {
+            width: 22px;
+            height: 30px;
+            margin-left: 70%;
+        }
+    }        
+
+    .new-task {
+        .add-new-task-for-right-container {
+            width: 290%;
+        }
+    }        
 }

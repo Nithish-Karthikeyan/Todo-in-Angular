@@ -24,8 +24,8 @@ export class TodoServiceService {
     this.http.post("http://localhost:8080/todo/category",category, httpOptions).subscribe((result) => console.log("Added Successfully"));
   }
 
-  getTasks() {
-    return this.http.get("http://localhost:8080/todo/tasks");
+  getTasks(categoryId: number) {
+    return this.http.get("http://localhost:8080/todo/tasks/category/"+categoryId);
   }
 
   addTask(task: Task) {
@@ -35,5 +35,9 @@ export class TodoServiceService {
       })
     };
     this.http.post("http://localhost:8080/todo/task",task, httpOptions).subscribe((result) => console.log("Added Successfully"));
+  }
+
+  getTaskById(taskId:number) {
+    return this.http.get("http://localhost:8080/todo/tasks/"+taskId);
   }
 }

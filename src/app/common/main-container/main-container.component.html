@@ -1,24 +1,25 @@
-<div class ="main-container" id="main-container">
+<div class="main-container" [ngClass]="resizeContainer?'resize-main-container':'main-container'" [ngClass]="isSideNavHidden?'resize-main-container-for-side-nav':'main-container'" >
     <div class="main-container-header">
-        <div id="main-title-icon" class="main-container-icon">
+        <div class="main-container-icon" (click)="openSideNav(false)">
         <i class="{{category.icon}}"></i>
         </div>
-        <div id = "task-title" class="main-container-title">
+        <div class="main-container-title">
             {{category.name}}
         </div>
         <div class="current-date">
-            <p id="date">{{currentDate}}</p>
-        </div> 
+            <p>{{currentDate}}</p>
+        </div>
     </div>
-    <div class = "task" id="task">
+    <div class = "task">
         <div class="task-status-icon">
             <i class="fa-regular fa-circle"></i>
         </div>
         <div class="new-task">
-            <input [(ngModel)]="task" class="add-new-task "id="add-new-task" type="text" placeholder="Add a task" (keyup.enter)="addTask(task); task= ''">
+            <input [(ngModel)]="taskName" class="add-new-task" type="text" placeholder="Add a task"
+                (keyup.enter)="addTask(taskName); taskName= ''" [ngClass]="resizeContainer?'resize-add-new-task':''" [ngClass]="isSideNavHidden?'resize-add-new-task-for-side-nav':''">
         </div>
     </div>
-    <div class="manage-task" id="manage-task">
+    <div class="manage-task">
         <div class = "manage-task-icons">
             <div class = "manage-task-icon">
                 <i class="fa-solid fa-calendar-days"></i>
@@ -30,28 +31,49 @@
                 <i class="fa-solid fa-repeat"></i> 
             </div>  
         </div>
-        <div id="hide-add-button" class="hide-add-button">
-            <button>Add</button>
+        <div class="hide-add-button" [ngClass]="resizeContainer?'resize-hide-add-button':''"
+        [ngClass]="isSideNavHidden?'resize-hide-for-side-nav':''">
+            <button (click)="addTask(taskName); taskName=''">Add</button>
         </div>
     </div>
     <div class="tasks-container">
-        <div class="task-container" id="task-container" *ngFor="let task of tasks">
-            <div class="create-task" id="">
+        <div class="task-container" *ngFor="let task of tasks">
+            <div class="create-task">
                 <div class="complete-icon">
-                    <i [ngClass]="task.isCompleted ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'" (click)="completedTask(task.id)"></i>
+                    <i [ngClass]="task.isCompleted ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'"
+                        (click)="completedTask(task)"></i>
                 </div> 
-                <div class="added-task" id="">
+                <div class="added-task" (click)="openTaskMenu(task.id)" [ngClass]="resizeContainer?'resize-added-task':''" [ngClass]="isSideNavHidden?'resize-added-task-for-side-nav':''">
                     <p>{{task.name}}</p>
                 </div>
                 <div class="important-icon">
-                    <i [ngClass]="task.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'" (click)="markImportant(task.id)"></i>
+                    <i [ngClass]="task.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'" (click)="markImportant(task)"></i>
                 </div>
             </div>
         </div>
-        <div class="completed-task-container">
-            <div class="completed-tasks">
-                <p>Completed</p>
+
+        <div *ngIf="completedTasks.length > 0" class="completed-tasks">
+            <p>Completed</p>
+        </div>
+
+        <div *ngFor="let taskCompleted of completedTasks">
+            <div class="hide-completed-tasks" [ngClass]="taskCompleted.isCompleted?'completed-task-container':''">
+                <div class="create-task">
+                    <div class="complete-icon">
+                        <i [ngClass]="taskCompleted.isCompleted ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'"
+                            (click)="completedTask(taskCompleted)"></i>
+                    </div>
+                    <div class="added-task" (click)="openTaskMenu(taskCompleted.id)"
+                        [ngClass]="resizeContainer?'resize-added-task':''" [ngClass]="isSideNavHidden?'resize-added-task-for-side-nav':''">
+                        <p>{{taskCompleted.name}}</p>
+                    </div>
+                    <div class="important-icon">
+                        <i [ngClass]="taskCompleted.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'"
+                            (click)="markImportant(taskCompleted)"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<app-right-container *ngIf=showRightContainer [task]="selectedTask" (hideTaskMenu)="closeTaskMenu($event)" (importantStatus)="markImportant($event)" (taskStatus)="completedTask($event)"></app-right-container>

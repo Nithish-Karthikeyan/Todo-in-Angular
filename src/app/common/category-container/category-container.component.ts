@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { TodoServiceService } from '../../todo-service.service';
 import { Category } from '../../Category';
 
@@ -7,33 +7,22 @@ import { Category } from '../../Category';
   templateUrl: './category-container.component.html',
   styleUrls: ['./category-container.component.scss']
 })
-export class CategoryContainerComponent implements OnInit {
+export class CategoryContainerComponent {
 
-  @Output() selectedCategory = new EventEmitter<Category>();
-
+    @Output() selectedCategory = new EventEmitter<Category>();
+    @Input() newCategory!:string
+    
     categories: Category[] = [];
+
     highlightSelectedCategory: string = "";
-    category!: string;
 
     constructor(private toDoService: TodoServiceService) {}
-
-    addCategory(value: string) {
-      let categoryName:string;
-        if (value && value.trim() != "") {
-          categoryName = value;
-        } else {
-          categoryName = "Untitled Task";
-        }
-        let category = {
-          id: 0,
-          name: categoryName,
-          icon: "fa-solid fa-list-ul",
-        };
-        this.toDoService.addCategory(category);
-        this.ngOnInit();
-    }        
     
-    ngOnInit() {
+    ngOnChanges() {
+      this.renderCategory();
+    }
+
+    renderCategory() {
       this.toDoService.getCategory().subscribe((existingCategories) => { this.categories = existingCategories as Category[];
         if(this.categories.length <= 5) {
           this.selectCategory(this.categories[0]);

@@ -1,12 +1,21 @@
-<div class="side-navigation">
+<div class="side-navigation" [ngClass]="sideNavStatus?'hide-side-navigation':'side-navigation'">
     <div class="side-navigation-header">
-        <div class = "side-navigation-button">
-            <button id="toggle-menu"><i class="fa-solid fa-bars"></i></button>
+        <div class = "side-navigation-button" (click)="toggleSideNav()">
+            <button><i class="fa-solid fa-bars"></i></button>
         </div>
     </div>
     <div class="side-navigation-content">
-        <app-category-container (selectedCategory)="chooseCategory($event)"></app-category-container>
+        <app-category-container (selectedCategory)="chooseCategory($event)" [newCategory]="category"></app-category-container>
+
+        <div>
+            <button><i class="fa-solid fa-plus"></i></button> 
+            <div class="add-list">
+                <input  [(ngModel)]="category" type="text" placeholder="New list" (keyup.enter)="addCategory(category); category= ''">
+            </div>    
+            <i class="fa-solid fa-user-plus"></i>
+        </div>  
     </div>
+
 
     <div class="side-navigation-bottom">
         <div class="side-navigation-bottom-icon">
@@ -26,4 +35,4 @@
         </div>
     </div>  
 </div>
-<app-main-container [category]="selectedCategory"></app-main-container>
+<app-main-container [category]="selectedCategory" [isSideNavHidden]="sideNavStatus" (sideNav)="openSideNav($event)"></app-main-container>

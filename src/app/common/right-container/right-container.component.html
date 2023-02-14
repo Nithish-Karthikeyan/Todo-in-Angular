@@ -1,6 +1,15 @@
-<div class = "right-container hide-right-container" id="right-container">
+<div class="right-container hide-right-container" *ngIf="existingTask">
     <div class = "task-header">
         <div class = "task-title">
+            <div>
+                <i [ngClass]="existingTask.isCompleted?'fa-regular fa-circle-check':'fa-regular fa-circle'"
+                    (click)="completedStatusOfTask(existingTask)"></i>
+            </div>
+            <div class=" display-task-title">{{existingTask.name}}</div>
+            <div>
+                <i [ngClass]="existingTask.isImportant?'fa-solid fa-star':'fa-regular fa-star'"
+                    (click)="markImportant(existingTask)"></i>
+            </div>
         </div>
     </div>
     <div class="task-details">    
@@ -44,12 +53,13 @@
                 <p>Add file</p>
             </button>
         </div>
-        <div class = "task-description">
-            <textarea class="task-note" type="text" placeholder="Add note"></textarea>
+        <div class="task-description">
+            <textarea [(ngModel)]="note" (blur)="addNote(note)" type="text"
+                placeholder="Add note">{{existingTask.note}}</textarea>
         </div>
     </div>
     <div class="task-details-footer">
-        <div id="exit-task-setting-icon">
+        <div (click)="closeTaskMenu(false)">
             <button>
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
