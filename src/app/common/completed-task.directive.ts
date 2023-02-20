@@ -10,5 +10,4 @@ export class CompletedTaskDirective {
   ngOnInit() {
     this.elementRef.nativeElement.style.textDecoration = 'line-through';
   }
-
 }

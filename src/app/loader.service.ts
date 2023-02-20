@@ -15,6 +15,6 @@ export class LoaderService {
   }
 
   getLoading() {
-    setTimeout(()=>this.loading.next(false),600);
+    this.loading.next(false);
   }
 }

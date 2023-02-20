@@ -9,12 +9,12 @@ import { TodoGuard } from './todo.guard';
 const routes: Routes = [
   {
     path: 'login',
-    component: TopNavComponent
+    component: LoginPageComponent
   },
   {
     path: 'todo',
     component: TopNavComponent,
-    //canActivate: [TodoGuard]
+    canActivate: [TodoGuard]
   },
     {
     path: '',

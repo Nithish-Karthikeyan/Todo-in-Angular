@@ -10,6 +10,6 @@ export class TopNavComponent {
   constructor(private router : Router){}
   
   openSettingsMenu() {
-    this.router.navigate(['setting']);
+    this.router.navigate(['settings']);
   }
 }

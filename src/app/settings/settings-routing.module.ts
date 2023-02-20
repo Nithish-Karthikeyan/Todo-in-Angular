@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TodoGuard } from '../todo.guard';
 import { GeneralComponent } from './general/general.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TodoSettingComponent } from './todo-setting/todo-setting.component';
 
 const routes: Routes = [
   {
-    path:'setting',
-    component:TodoSettingComponent,
+    path:'settings',
+    canActivateChild: [TodoGuard],
     children: [
+      {
+        path: '',
+        component:TodoSettingComponent,
+      },
       {
         path: 'general',
         component: GeneralComponent,
