@@ -4,11 +4,11 @@
         <p>Settings</p>
     </div>
 
-    <div class="setting-menu">
+    <div class="setting-menu" (click)="openGeneralSettings()">
         <i class="fa-solid fa-gears"></i>
         <p>General</p>
     </div>
-    <div class="setting-menu">
+    <div class="setting-menu" (click)="openProfileSettings()">
         <i class="fa-solid fa-user"></i>
         <p>Profile</p>
     </div>
@@ -17,3 +17,4 @@
         <p>Back</p>
     </div>
 </div>
+<router-outlet></router-outlet>

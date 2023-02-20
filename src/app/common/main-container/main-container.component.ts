@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../../Task';
-import * as moment from 'moment';
 import { Category } from '../../Category';
 import { TodoServiceService } from '../../todo-service.service';
+import { DatePipe } from "@angular/common";
 
 @Component({
   selector: 'app-main-container',
@@ -12,7 +12,7 @@ import { TodoServiceService } from '../../todo-service.service';
 export class MainContainerComponent { 
   tasks: Task[] = [];
   completedTasks : Task[] = [];
-  currentDate!: string;
+  currentDate : string = '';
   taskName !: string;
   selectedTask!:Task;
   showRightContainer : boolean = false;
@@ -24,7 +24,7 @@ export class MainContainerComponent {
   @Input() isSideNavHidden:boolean = false; 
   @Output() sideNav = new EventEmitter<boolean>();
 
-  constructor(private todoService:TodoServiceService){}
+  constructor(private todoService:TodoServiceService, private datePipe: DatePipe){}
 
   addTask(value: string) {
     let makeImportant: boolean;
@@ -38,7 +38,7 @@ export class MainContainerComponent {
         id: 0,
         name: value,
         categoryIds: [this.category.id],
-        note: "none",
+        note: "",
         isImportant: makeImportant,
         isCompleted: false,
       };
@@ -72,7 +72,8 @@ export class MainContainerComponent {
   }
 
   ngOnChanges() {
-    this.currentDate = moment().format("dddd , MMMM D");
+    let todayDate = Date.now();
+    this.currentDate = this.datePipe.transform(todayDate, 'EEEE, LLLL dd') || '';
     this.renderTasks();
     this.closeTaskMenu(this.resizeContainer);
   }

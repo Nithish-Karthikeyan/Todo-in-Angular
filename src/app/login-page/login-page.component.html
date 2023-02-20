@@ -1,0 +1,14 @@
+<div>
+    <div class="user-name">
+        <label id="userName">Username:</label>
+        <input type="text" name="user-name" placeholder="Enter Username" required [(ngModel)]="userName">
+    </div>
+    <div class="password">
+        <label id="password">Password:</label>
+        <input type="password" name="password" placeholder="Enter Password" required [(ngModel)]="password">
+    </div>
+    <div class="submit-button" (click)="validateUser()">
+        <button>Login</button>
+    </div>
+    <div class="status">{{message}}</div>
+</div>

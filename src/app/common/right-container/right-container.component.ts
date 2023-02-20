@@ -26,6 +26,7 @@ export class RightContainerComponent implements OnChanges {
         this.task.note = note;
       }
       this.todoService.addTask(this.task);
+      this.renderTask();
   }
 
   ngOnChanges() {

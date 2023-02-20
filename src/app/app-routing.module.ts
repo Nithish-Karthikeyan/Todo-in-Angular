@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SideNavComponent } from './common/side-nav/side-nav.component';
-import { TodoSettingComponent } from './todo/todo-setting/todo-setting.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { TopNavComponent } from './todo/top-nav/top-nav.component';
+import { SettingsRoutingModule } from './settings/settings-routing.module';
+import { TodoGuard } from './todo.guard';
 
 const routes: Routes = [
   {
-    path: '',
-    component: SideNavComponent
+    path: 'login',
+    component: TopNavComponent
   },
   {
-    path:'setting', component:TodoSettingComponent
+    path: 'todo',
+    component: TopNavComponent,
+    //canActivate: [TodoGuard]
+  },
+    {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
   },
   {
     path:'**',
@@ -19,7 +28,7 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), SettingsRoutingModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

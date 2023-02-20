@@ -65,7 +65,7 @@
                     </div>
                     <div class="added-task" (click)="openTaskMenu(taskCompleted.id)"
                         [ngClass]="resizeContainer?'resize-added-task':''" [ngClass]="isSideNavHidden?'resize-added-task-for-side-nav':''">
-                        <p>{{taskCompleted.name}}</p>
+                        <p appCompletedTask>{{taskCompleted.name}}</p>
                     </div>
                     <div class="important-icon">
                         <i [ngClass]="taskCompleted.isImportant ? 'fa-solid fa-star' : 'fa-regular fa-star'"

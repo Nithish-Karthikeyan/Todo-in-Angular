@@ -1,7 +1,9 @@
+import { DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CategoryContainerComponent } from './category-container/category-container.component';
+import { CompletedTaskDirective } from './completed-task.directive';
 import { MainContainerComponent } from './main-container/main-container.component';
 import { RightContainerComponent } from './right-container/right-container.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
@@ -12,9 +14,11 @@ import { SideNavComponent } from './side-nav/side-nav.component';
     CategoryContainerComponent,
     RightContainerComponent,
     MainContainerComponent,
-    SideNavComponent
+    SideNavComponent,
+    CompletedTaskDirective
   ],
   imports: [BrowserModule, FormsModule],
+  providers: [DatePipe],
   exports: [
     CategoryContainerComponent,
     RightContainerComponent,
