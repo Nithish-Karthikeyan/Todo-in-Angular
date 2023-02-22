@@ -30,7 +30,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig =
   text: "To Do",
   textColor: "#2564CF",
   textPosition: "center-center",
-  minTime: 2000
+  minTime: 100
 }
 
 
