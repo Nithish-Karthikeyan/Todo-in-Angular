@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +6,7 @@ import { Router } from '@angular/router';
 export class AuthenticationServiceService {
   isValidUser : boolean = false;
 
-  constructor(private router : Router) {}
+  constructor() {}
 
   validateUser(userName : string, password : string) {
     if(userName === "user" && password === "1234") {

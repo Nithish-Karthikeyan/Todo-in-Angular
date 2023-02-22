@@ -18,6 +18,13 @@ export class MainContainerComponent {
   showRightContainer : boolean = false;
   resizeContainer: boolean = false;
   isTaskMenuHidden !: boolean;
+  highlightTask : Task ={ 
+    id: 0, 
+    name: "",
+    categoryIds: [0], 
+    note: "",
+    isImportant: false,
+    isCompleted: false}
 
   @Input()
   category!: Category;
@@ -95,7 +102,9 @@ export class MainContainerComponent {
   }
 
   openTaskMenu(taskId : number) {
-    this.todoService.getTaskById(taskId).subscribe((existingTask)=> this.selectedTask = existingTask as Task);
+    this.todoService.getTaskById(taskId).subscribe((existingTask)=> {
+      this.selectedTask = existingTask as Task;
+    this.highlightTask = existingTask as Task});
     this.showRightContainer = true;
     this.resizeContainer= true;
   }

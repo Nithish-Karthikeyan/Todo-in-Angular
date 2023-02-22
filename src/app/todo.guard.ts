@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import { AuthenticationServiceService } from './authentication-service.service';
 
 @Injectable({
@@ -23,10 +22,6 @@ export class TodoGuard implements CanActivate, CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      if(!this.authService.isUserLoggedIn()) {
-        this.router.navigate(['login']);
-        return false;
-      }
-    return this.authService.isUserLoggedIn();
+    return this.canActivate(childRoute, state);
   }
  }

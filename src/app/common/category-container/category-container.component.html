@@ -1,5 +1,5 @@
 <ul id = "task-list">
-    <li class="side-navigation-menu"  *ngFor="let category of categories" (click)="selectCategory(category)">
+    <li class="side-navigation-menu"  *ngFor="let category of categories" (click)="selectCategory(category)" [ngClass]="category.id === highlightSelectedCategory.id ?'selected-menu':''">
         <div class="side-navigation-menu-icon">
             <i class="{{category.icon}}"></i>
         </div>

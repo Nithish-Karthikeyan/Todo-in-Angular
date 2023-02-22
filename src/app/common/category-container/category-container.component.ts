@@ -14,7 +14,7 @@ export class CategoryContainerComponent {
     
     categories: Category[] = [];
 
-    highlightSelectedCategory: string = "";
+    highlightSelectedCategory !: Category ;
 
     constructor(private toDoService: TodoServiceService) {}
     
@@ -33,7 +33,7 @@ export class CategoryContainerComponent {
     }
     
     selectCategory(category: Category) {
+      this.highlightSelectedCategory = category;
       this.selectedCategory.emit(category);
-      this.highlightSelectedCategory = "selected-menu";
     }
 }

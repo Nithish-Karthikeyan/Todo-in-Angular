@@ -38,7 +38,7 @@
     </div>
     <div class="tasks-container">
         <div class="task-container" *ngFor="let task of tasks">
-            <div class="create-task">
+            <div class="create-task" [ngClass]="task.id == highlightTask.id ? 'selected-task':'' ">
                 <div class="complete-icon">
                     <i [ngClass]="task.isCompleted ? 'fa-regular fa-circle-check' : 'fa-regular fa-circle'"
                         (click)="completedTask(task)"></i>
