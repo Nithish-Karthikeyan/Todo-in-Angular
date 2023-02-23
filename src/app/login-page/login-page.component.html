@@ -1,17 +1,29 @@
+<div class="login-background">
 <div class="login-container">
     <div class="login-title">
         <p>Sign In</p>
     </div>
     <div class="user-name">
-        <label id="userName">Username:</label>
+        <div>
+            <i class="fa-solid fa-user"></i>
+        </div>
         <input type="text" name="user-name" placeholder="Enter Username" required [(ngModel)]="userName" (keyup.enter)="validateUser()">
     </div>
     <div class="password">
-        <label id="password">Password:</label>
+        <div>
+            <i class="fa-solid fa-lock"></i>
+        </div>
         <input type="password" name="password" placeholder="Enter Password" required [(ngModel)]="password" (keyup.enter)="validateUser()">
     </div>
     <div class="submit-button" (click)="validateUser()">
         <button>Login</button>
     </div>
+    <div class="forgot-password">
+        <p>Forgot your password?</p>
+    </div>
+    <div class="sign-up">
+        <p>Sign Up</p>
+    </div>
     <div class="status">{{message}}</div>
+</div>
 </div>

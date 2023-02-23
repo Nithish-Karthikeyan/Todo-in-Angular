@@ -21,6 +21,14 @@
             background-color: transparent;
             font-size: 20px;
             font-weight: 600;
+            width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top;
+        }
+
+        .main-container-title:hover {
+            overflow: visible;
         }
 
         .current-date {

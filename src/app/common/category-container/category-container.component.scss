@@ -6,10 +6,18 @@ ul {
         background-color: transparent;
         pointer-events: none;
 
-        span {
+        p {
             display: inline-block;
             height: 35px;
             padding-left: 10px;
+            width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: top;
+        }
+
+        p:hover {
+            overflow:visible;
         }
     }
 

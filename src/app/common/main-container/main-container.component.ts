@@ -44,7 +44,7 @@ export class MainContainerComponent {
       let newTask = {
         id: 0,
         name: value,
-        categoryIds: [this.category.id],
+        categoryIds: [this.category.id,5],
         note: "",
         isImportant: makeImportant,
         isCompleted: false,
@@ -91,10 +91,12 @@ export class MainContainerComponent {
       let incompleteTasks : Task[] = [];
       for(let task of existingTasks as Task[]) {
         if(task.isCompleted){
-          completeTasks.push(task);
+          if(this.category.id != 2) {
+            completeTasks.push(task);
+          }
         } else {
           incompleteTasks.push(task);
-        }
+        } 
       }
       this.tasks = incompleteTasks;
       this.completedTasks = completeTasks;
