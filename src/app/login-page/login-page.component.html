@@ -13,7 +13,8 @@
         <div>
             <i class="fa-solid fa-lock"></i>
         </div>
-        <input type="password" name="password" placeholder="Enter Password" required [(ngModel)]="password" (keyup.enter)="validateUser()">
+        <input [type]="typeStatus? 'password':'text'" name="password" placeholder="Enter Password" required [(ngModel)]="password" (keyup.enter)="validateUser()">
+        <button class="show-password" (click)="showPassword()">Show</button>
     </div>
     <div class="submit-button" (click)="validateUser()">
         <button>Login</button>

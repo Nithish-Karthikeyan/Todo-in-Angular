@@ -55,7 +55,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig =
         SettingsModule,
         FormsModule,
         BrowserAnimationsModule,
-        MatProgressSpinnerModule,
         NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
         NgxUiLoaderRouterModule.forRoot({exclude: ["/settings"]}) 
     ]

@@ -1,5 +1,5 @@
 <div class="main-container" [ngClass]="resizeContainer?'resize-main-container':'main-container'" [ngClass]="isSideNavHidden?'resize-main-container-for-side-nav':'main-container'" >
-    <div class="main-container-header">
+    <div class="main-container-header" *ngIf="category">
         <div class="main-container-icon" (click)="openSideNav(false)">
         <i class="{{category.icon}}"></i>
         </div>

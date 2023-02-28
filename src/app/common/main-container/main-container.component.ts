@@ -27,7 +27,7 @@ export class MainContainerComponent {
     isCompleted: false}
 
   @Input()
-  category!: Category;
+  category !: Category;
   @Input() isSideNavHidden:boolean = false; 
   @Output() sideNav = new EventEmitter<boolean>();
 

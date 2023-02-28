@@ -1,4 +1,6 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TodoServiceService } from 'src/app/todo-service.service';
 
 import { RightContainerComponent } from './right-container.component';
 
@@ -8,7 +10,9 @@ describe('RightContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RightContainerComponent ]
+      declarations: [ RightContainerComponent ],
+      providers: [TodoServiceService],
+      imports: [HttpClientModule]
     })
     .compileComponents();
 

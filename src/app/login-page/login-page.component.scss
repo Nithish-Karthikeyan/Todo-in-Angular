@@ -84,7 +84,7 @@
                 display: inline-block;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                width: 320px;
+                width: 275px;
                 height: 40px;
                 color: black;
                 font-size: 16px;
@@ -100,6 +100,24 @@
             input:focus {
                 font-size: 16px;
                 color: black;
+            }
+
+            .show-password{
+                display: inline-block;
+                margin-left: 5px;
+                padding-left: 5px;
+                font-size: 16px;
+                color: #2564CF;
+                padding: 15px 19px 15px 0;
+                border-top-right-radius: 30px;
+                border-bottom-right-radius: 30px;
+                text-align: center;
+            }
+
+            .show-password:hover {
+                color: #2564CF;
+                background-color: rgba(235, 232, 232, 0.895);
+                font-weight: 400;
             }
         }
 

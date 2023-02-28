@@ -11,6 +11,7 @@ export class LoginPageComponent {
     userName : string = "";
     password : string = "";
     message : string = "";
+    typeStatus : boolean = true;
 
     constructor(private router : Router, private authService : AuthenticationServiceService){}
   
@@ -24,5 +25,13 @@ export class LoginPageComponent {
 
     openApp() {
       this.router.navigate(['todo']);
+    }
+
+    showPassword() {
+      if(this.typeStatus) {
+        this.typeStatus = false;
+      } else {
+        this.typeStatus = true;
+      }
     }
 }

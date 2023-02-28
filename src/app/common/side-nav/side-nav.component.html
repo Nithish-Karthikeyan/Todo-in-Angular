@@ -35,4 +35,4 @@
         </div>
     </div>  
 </div>
-<app-main-container [category]="selectedCategory" [isSideNavHidden]="sideNavStatus" (sideNav)="openSideNav($event)"></app-main-container>
+<app-main-container *ngIf="selectedCategory" [category]="selectedCategory" [isSideNavHidden]="sideNavStatus" (sideNav)="openSideNav($event)"></app-main-container>
