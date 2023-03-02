@@ -45,7 +45,12 @@ describe('CategoryContainerComponent', () => {
     };
     TestBed.configureTestingModule({
       declarations: [ CategoryContainerComponent ],
-      providers:[{provide: TodoServiceService, useValue: mockTodoService}],
+      providers:[
+        {
+          provide: TodoServiceService,
+          useValue: mockTodoService
+        }
+      ],
       imports: [HttpClientModule]
     })
     .compileComponents();

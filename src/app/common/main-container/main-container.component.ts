@@ -36,7 +36,7 @@ export class MainContainerComponent {
   addTask(value: string) {
     let makeImportant: boolean;
     if (value && value.trim() !== "") {
-      if (this.category.id == 2) {
+      if (this.category.id === 2) {
         makeImportant = true;
       } else {
         makeImportant = false;
@@ -44,7 +44,7 @@ export class MainContainerComponent {
       let newTask = {
         id: 0,
         name: value,
-        categoryIds: [this.category.id,5],
+        categoryIds: [this.category.id,5],  
         note: "",
         isImportant: makeImportant,
         isCompleted: false,
@@ -55,12 +55,12 @@ export class MainContainerComponent {
   }
 
   markImportant(task: Task) {
-    if (task.isImportant == false) {
-      task.isImportant = true;
-      task.categoryIds.splice(0, 0, 2);
-    } else {
+    if (task.isImportant) {
       task.isImportant = false;
       task.categoryIds.splice(0, 1);
+    } else {
+      task.isImportant = true;
+      task.categoryIds.splice(0, 0, 2);
     }
     this.todoService.addTask(task);
     this.renderTasks();
@@ -68,10 +68,10 @@ export class MainContainerComponent {
   }
 
   completedTask(task:Task) {
-    if (task.isCompleted == false) {
-      task.isCompleted = true;
+    if (task.isCompleted) {
+      task.isCompleted = false;
     } else {
-      task.isCompleted= false;
+      task.isCompleted = true;
     }
     this.todoService.addTask(task);
     this.renderTasks();

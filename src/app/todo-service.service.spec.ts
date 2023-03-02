@@ -1,16 +1,46 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-
+import { Category } from './Category';
 import { TodoServiceService } from './todo-service.service';
 
-describe('TodoServiceService', () => {
+fdescribe('TodoServiceService', () => {
   let service: TodoServiceService;
+  let httpClient: HttpClient;
+  let categories = [
+      {
+        id: 1,
+        name: "My Day",
+        icon: "fa-solid fa-sun"
+      },
+      {
+        id: 2,
+        name: "Important",
+        icon: "fa-regular fa-star"
+      },
+      {
+        id: 3,
+        name: "Planned",
+        icon: "fa-regular fa-calendar"
+      },
+      {  
+       id: 4,
+       name: "Assigned to me",
+       icon: "fa-solid fa-user"
+      },
+      {
+        id: 5,
+        name: "Tasks",
+        icon: "fa-solid fa-house"
+      }
+    ];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule]
+      imports: [HttpClientTestingModule]
     });
     service = TestBed.inject(TodoServiceService);
+    httpClient = TestBed.inject(HttpClient);
   });
 
   it('should be created', () => {

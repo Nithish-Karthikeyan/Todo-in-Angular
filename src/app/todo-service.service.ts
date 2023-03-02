@@ -4,6 +4,7 @@ import { Category } from '../app/Category'
 import { HttpHeaders } from '@angular/common/http';
 import { Task } from './Task';
 import { environment } from '../environments/environment.development';
+import { User } from './User';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,14 @@ export class TodoServiceService {
 
   getTaskById(taskId:number) {
     return this.http.get(`${this.baseUrl}/tasks/${taskId}`);
+  }
+
+  getUser(user: User){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    return this.http.post(`${this.baseUrl}/userDetails`, user, httpOptions);
   }
 }
